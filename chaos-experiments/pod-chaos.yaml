@@ -1,16 +1,11 @@
 apiVersion: chaos-mesh.org/v1alpha1
-kind: Schedule
+kind: PodChaos
 metadata:
-  name: api-pod-kill-schedule
+  name: api-pod-kill
   namespace: default
 spec:
-  schedule: '@every 60s'
-  type: 'PodChaos'
-  historyLimit: 2
-  concurrencyPolicy: 'Forbid'
-  podChaos:
-    action: pod-kill
-    mode: one
-    selector:
-      labelSelectors:
-        app: api-votacao
+  action: pod-kill
+  mode: one
+  selector:
+    labelSelectors:
+      app: api-votacao
