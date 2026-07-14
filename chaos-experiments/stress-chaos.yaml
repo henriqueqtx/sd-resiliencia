@@ -1,0 +1,15 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: api-cpu-stress
+  namespace: default
+spec:
+  mode: one
+  duration: "120s"
+  selector:
+    labelSelectors:
+      app: api-votacao
+  stressors:
+    cpu:
+      workers: 2
+      load: 100

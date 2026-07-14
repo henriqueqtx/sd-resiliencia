@@ -1,0 +1,69 @@
+# =========================
+# Java e Spring Boot
+# =========================
+HELP.md
+.gradle/
+build/*
+!build/libs/
+build/libs/*
+!build/libs/*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# =========================
+# Frontend / Node (Geral)
+# =========================
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# =========================
+# Arquivos de Sistema Operacional
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+Thumbs.db
+
+# =========================
+# IDEs (IntelliJ, VS Code, Eclipse)
+# =========================
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### VS Code ###
+.vscode/
+
+### Eclipse / STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =========================
+# Outros
+# =========================
+*.log
+*.sqlite
+*.db

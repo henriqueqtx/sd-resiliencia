@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-votacao
+spec:
+  replicas: 3 # ALTA DISPONIBILIDADE: 3 cópias da API rodando juntas
+  selector:
+    matchLabels:
+      app: api-votacao
+  template:
+    metadata:
+      labels:
+        app: api-votacao
+    spec:
+      containers:
+        - name: api-votacao
+          image: api-votacao:latest # O nome da imagem que você buildou no Docker
+          imagePullPolicy: Never # CRUCIAL: Avisa o Minikube para usar a imagem da sua máquina, sem tentar baixar da internet
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "1000m"
+              memory: "512Mi"
+          ports:
+            - containerPort: 8080
+          readinessProbe: # RESILIÊNCIA: Só recebe tráfego quando o Spring Boot estiver 100% pronto
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            failureThreshold: 6
+          startupProbe: # PROTEÇÃO DE BOOT: Dá até 150s para o Spring subir no Minikube
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 14
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://database:5432/votacao_db" # Se conecta usando o nome do Service do banco
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "admin"
+            - name: SPRING_JPA_DATABASE_PLATFORM
+              value: "org.hibernate.dialect.PostgreSQLDialect"
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: "org.postgresql.Driver"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service
+spec:
+  selector:
+    app: api-votacao
+  ports:
+    - port: 8080
+      targetPort: 8080
