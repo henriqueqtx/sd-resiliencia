@@ -66,7 +66,7 @@ Tudo o que você precisa ter instalado no seu computador é:
    ```bash
    minikube start --driver=docker
    ```
-3. Rode o comando mágico que fará o deploy automático de toda a arquitetura no Kubernetes:
+3. Rode o comando make que fará o deploy automático de toda a arquitetura no Kubernetes:
    ```bash
    make run
    ```
