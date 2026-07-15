@@ -92,7 +92,7 @@ Você pode rodar os seguintes experimentos usando os atalhos do `Makefile`:
   ```bash
   make start-pod-chaos
   ```
-  *Observação: A cada 60s, o Chaos vai matar uma instância da API. Você notará que o sistema continua funcionando (Alta Disponibilidade), pois as outras instâncias assumem imediatamente.*
+  *Observação: o Chaos vai matar uma instância da API. Você notará que o sistema continua funcionando (Alta Disponibilidade), pois as outras instâncias assumem imediatamente.*
 
 - **Injetar Latência Extrema no Banco de Dados:**
   ```bash
@@ -114,4 +114,3 @@ make stop-stress-chaos
 ```
 
 ---
-Feito com ☕ e focado em Resiliência! 🛡️
