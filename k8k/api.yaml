@@ -4,6 +4,11 @@ metadata:
   name: api-votacao
 spec:
   replicas: 3 # ALTA DISPONIBILIDADE: 3 cópias da API rodando juntas
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          
+      maxUnavailable: 1    
   selector:
     matchLabels:
       app: api-votacao
@@ -14,8 +19,8 @@ spec:
     spec:
       containers:
         - name: api-votacao
-          image: api-votacao:latest # O nome da imagem que você buildou no Docker
-          imagePullPolicy: Never # CRUCIAL: Avisa o Minikube para usar a imagem da sua máquina, sem tentar baixar da internet
+          image: api-votacao:latest 
+          imagePullPolicy: Never 
           resources:
             requests:
               cpu: "200m"
@@ -25,14 +30,14 @@ spec:
               memory: "512Mi"
           ports:
             - containerPort: 8080
-          readinessProbe: # RESILIÊNCIA: Só recebe tráfego quando o Spring Boot estiver 100% pronto
+          readinessProbe: 
             httpGet:
               path: /actuator/health
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 5
             failureThreshold: 6
-          startupProbe: # PROTEÇÃO DE BOOT: Dá até 300s para o Spring subir no Minikube
+          startupProbe: 
             httpGet:
               path: /actuator/health
               port: 8080

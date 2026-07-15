@@ -33,7 +33,7 @@ chaos-mesh:
 # --- Comandos práticos para rodar os experimentos ---
 
 start-network-chaos:
-	@echo "Iniciando NetworkChaos (Lentidão Infinita no Banco de Dados)..."
+	@echo "Iniciando NetworkChaos..."
 	kubectl apply -f chaos-experiments/network-chaos.yaml
 
 stop-network-chaos:
@@ -41,7 +41,7 @@ stop-network-chaos:
 	kubectl delete -f chaos-experiments/network-chaos.yaml --ignore-not-found
 
 start-pod-chaos:
-	@echo "Iniciando PodChaos (Mata 1 Pod a cada 30 segundos)..."
+	@echo "Iniciando PodChaos"
 	kubectl apply -f chaos-experiments/pod-chaos.yaml
 
 stop-pod-chaos:
@@ -49,16 +49,12 @@ stop-pod-chaos:
 	kubectl delete -f chaos-experiments/pod-chaos.yaml --ignore-not-found
 
 start-stress-chaos:
-	@echo "Iniciando StressChaos (100% de CPU constante na API)..."
+	@echo "Iniciando StressChaos"
 	kubectl apply -f chaos-experiments/stress-chaos.yaml
 
 stop-stress-chaos:
 	@echo "Parando StressChaos..."
 	kubectl delete -f chaos-experiments/stress-chaos.yaml --ignore-not-found
-
-port-forward:
-	@echo "Abrindo túnel para a API na porta 8080 (cuidado: túneis quebram com instabilidade de rede)..."
-	kubectl port-forward service/api-service 8080:8080
 
 service:
 	@echo "Abrindo o Site no navegador (via Frontend Service)..."
