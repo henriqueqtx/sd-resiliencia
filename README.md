@@ -49,14 +49,14 @@ Abaixo estão detalhadas todas as técnicas implementadas para garantir a alta d
 
 ## 🚀 Como Rodar o Projeto 
 
-Para facilitar a avaliação deste projeto em outros computadores, **as builds compiladas do Java (arquivos `.jar`) já estão inclusas no repositório GitHub**. Isso significa que você **não precisa ter o Java, JDK ou Gradle instalados na sua máquina para compilar o código**. O Docker criará a imagem diretamente a partir da build que já subimos, economizando dezenas de minutos de compilação.
+Para facilitar a avaliação deste projeto em outros computadores, **as builds compiladas do Java (arquivos `.jar`) já estão inclusas no repositório GitHub**. Isso significa que você **não precisa ter o Java, JDK ou Gradle instalados na sua máquina para compilar o código**. O Docker criará a imagem diretamente a partir da build que já subimos.
 
 ### 📋 Pré-requisitos
 Tudo o que você precisa ter instalado no seu computador é:
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop/) rodando.
 2. [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 3. [kubectl](https://kubernetes.io/docs/tasks/tools/)
-4. [Helm](https://helm.sh/docs/intro/install/) (Opcional, para instalar o Chaos Mesh)
+4. [Helm](https://helm.sh/docs/intro/install/) 
 5. `Make` (Nativo no Linux/Mac. No Windows, pode usar via Git Bash, ou o Chocolatey: `choco install make`).
 
 ### ⚙️ Subindo o Sistema
