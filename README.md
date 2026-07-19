@@ -47,7 +47,7 @@ Abaixo estão detalhadas todas as técnicas implementadas para garantir a alta d
 
 ---
 
-## 🚀 Como Rodar o Projeto (Instruções para Avaliação)
+## 🚀 Como Rodar o Projeto 
 
 Para facilitar a avaliação deste projeto em outros computadores, **as builds compiladas do Java (arquivos `.jar`) já estão inclusas no repositório GitHub**. Isso significa que você **não precisa ter o Java, JDK ou Gradle instalados na sua máquina para compilar o código**. O Docker criará a imagem diretamente a partir da build que já subimos, economizando dezenas de minutos de compilação.
 
